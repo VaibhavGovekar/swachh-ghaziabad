@@ -425,4 +425,82 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* VIEW 3: AUTHORITY DASHBOARD */}
+        {view === 'admin' && (
+          <div className="bg-white border border-slate-200 rounded-3xl p-5 shadow-sm space-y-4">
+            <div className="border-b border-slate-100 pb-3">
+              <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded font-bold uppercase tracking-wider">
+                Official Desk
+              </span>
+              <h2 className="text-base font-bold text-slate-800 mt-1">Ghaziabad Municipal Action Center</h2>
+              <p className="text-xs text-slate-500">Live escalation queue from citizen QR scans</p>
+            </div>
+
+            <div className="space-y-3">
+              <div className="p-3.5 bg-red-50 border border-red-200 rounded-2xl text-xs space-y-1.5">
+                <div className="flex justify-between font-bold">
+                  <span className="text-red-700">TKT-7821 • Sanjay Nagar Sector 23</span>
+                  <span className="text-red-600 bg-white px-1.5 py-0.5 rounded border border-red-200">Critical Priority</span>
+                </div>
+                <p className="text-slate-700 font-medium">Issue: No Water & Dirty Floor (Rating 1★)</p>
+                <p className="text-slate-500 text-[10px]">Reported 10 mins ago via QR scan</p>
+                <div className="pt-2 flex gap-2">
+                  <button className="bg-red-700 text-white px-3 py-1 rounded-xl text-[11px] font-semibold">Dispatch Cleaning Squad</button>
+                  <button className="bg-white border border-slate-300 text-slate-700 px-3 py-1 rounded-xl text-[11px]">Mark Resolved</button>
+                </div>
+              </div>
+
+              <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-2xl text-xs space-y-1.5">
+                <div className="flex justify-between font-bold">
+                  <span className="text-amber-800">TKT-7809 • Naya Ganj (Navyug Market)</span>
+                  <span className="text-amber-700 bg-white px-1.5 py-0.5 rounded border border-amber-200">Normal</span>
+                </div>
+                <p className="text-slate-700 font-medium">Issue: Broken Door Lock (Rating 2★)</p>
+                <p className="text-slate-500 text-[10px]">Reported 35 mins ago</p>
+                <div className="pt-2 flex gap-2">
+                  <button className="bg-emerald-700 text-white px-3 py-1 rounded-xl text-[11px] font-semibold">Send Plumber/Carpenter</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </main>
+
+      {/* Real QR Poster Modal for Professor Demo */}
+      {showPosterModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
+          <div className="bg-white max-w-sm w-full rounded-3xl p-6 text-center shadow-2xl border">
+            <span className="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold uppercase tracking-wider">
+              Nagar Nigam Official Poster
+            </span>
+            <h3 className="font-bold text-slate-900 text-base mt-1">Scan for Cleanliness Feedback</h3>
+            <p className="text-[11px] text-slate-500 mt-0.5">Professor can scan directly with mobile camera</p>
+            
+            <div className="my-4 bg-slate-50 border border-slate-200 p-4 rounded-2xl flex flex-col items-center">
+              <img 
+                src={qrUrl} 
+                alt="QR Code" 
+                className="w-48 h-48 rounded-xl shadow-md bg-white p-2 border"
+              />
+              <p className="text-xs font-bold text-slate-800 mt-3 text-center">{selectedToilet.name}</p>
+              <p className="text-[11px] text-slate-500 text-center mt-1 leading-tight">{selectedToilet.address}</p>
+            </div>
+
+            <button 
+              onClick={() => setShowPosterModal(false)}
+              className="w-full bg-slate-900 text-white py-2.5 rounded-xl text-xs font-semibold hover:bg-slate-800">
+              Close Poster
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
  
